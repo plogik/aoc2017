@@ -9,7 +9,7 @@ namespace day02
     {
         static void Main(string[] args)
         {
-            var dataEnum = File.ReadLines("input.txt");
+            var dataEnum = File.ReadLines("../../inputs/day02.txt");
             //Console.WriteLine(SolvePt1(dataEnum));
             Console.WriteLine(SolvePt2(dataEnum));
         }
