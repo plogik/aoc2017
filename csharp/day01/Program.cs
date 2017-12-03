@@ -12,9 +12,6 @@ namespace day01
             var data = File.ReadAllText("../../inputs/day01.txt").Trim();
             Console.WriteLine(SolvePt1(data));
             Console.WriteLine(SolvePt2(data));
-
-            Console.ReadLine();
-
         }
         static int SolvePt1(string data)
         {
