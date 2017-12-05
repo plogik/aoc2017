@@ -10,26 +10,18 @@ public class Day01 {
                 new String(
                         Files.readAllBytes(Paths.get("../../inputs/day01.txt"))
                     ).trim();
-            System.out.println("Pt1:" + solvePt1(data));
-            System.out.println("Pt2:" + solvePt2(data));
+            System.out.println("Pt1:" + solve(data, 1));
+            System.out.println("Pt2:" + solve(data, data.length() / 2));
         }
         catch(Exception e) {
             System.out.println(e.getMessage());
         }
     }
 
-    static int solvePt1(String str) {
+    static int solve(String str, int compareOffset) {
         char[] data = str.toCharArray();
         return IntStream.range(0, data.length)
-                .filter(i -> data[i] == data[(i + 1) % data.length])
-                .map(i -> data[i] - '0')
-                .sum();
-    }
-
-    static int solvePt2(String str) {
-        char[] data = str.toCharArray();
-        return IntStream.range(0, data.length)
-                .filter(i -> data[i] == data[(i + data.length / 2) % data.length])
+                .filter(i -> data[i] == data[(i + compareOffset) % data.length])
                 .map(i -> data[i] - '0')
                 .sum();
     }
