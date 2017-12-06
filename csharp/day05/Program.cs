@@ -9,7 +9,7 @@ namespace day05
     {
         static void Main(string[] args)
         {
-            var data = File.ReadAllText("../../inputs/day05.txt");
+            var data = File.ReadAllText("../../inputs/day05_alt.txt");
             var instructions = data
                 .Split(new[] {' ', '\n', '\r'}, StringSplitOptions.RemoveEmptyEntries)
                 .Select(x => int.Parse(x))
