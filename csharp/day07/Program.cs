@@ -4,13 +4,13 @@ using System.IO;
 using System.Linq;
 using System.Text.RegularExpressions;
 
-namespace day07
+/*namespace day07
 {
     class Program
     {
         static void Main(string[] args)
         {
-            var data = File.ReadAllText("../../inputs/day07_ex1.txt").Trim();
+            var data = File.ReadAllText("../../inputs/day07.txt").Trim();
             //Console.WriteLine(SolvePt1(data));
             SolvePt2(data);
         }
@@ -31,11 +31,6 @@ namespace day07
         {
             var nodes = GetNodes(data);
             var rootName = SolvePt1(data);
-            /*var korv = NodeNamesUnder(data, root);
-            foreach(var key in korv)
-            {
-                Console.WriteLine(key);
-            }*/
             var rootNode = new Node() { Name = rootName };
             BuildTree(data, rootNode);
             foreach(var child in rootNode.Children)
@@ -104,3 +99,4 @@ namespace day07
         }
     }
 }
+*/
