@@ -1,5 +1,6 @@
 ﻿using System;
 using System.IO;
+using System.Diagnostics;
 
 namespace day09
 {
@@ -8,8 +9,12 @@ namespace day09
         static void Main(string[] args)
         {
             var data = File.ReadAllText("../../inputs/day09.txt");
+            var sw = new Stopwatch();
+            sw.Start();
             var result = Solve(data);
-            Console.WriteLine("Total:{0}, garbage:{1}", result.total, result.totalGarbage);
+            sw.Stop();
+            Console.WriteLine("Total:{0}, garbage:{1}, elapsed:{2}",
+                    result.total, result.totalGarbage, sw.Elapsed);
         }
 
         static (int total, int totalGarbage) Solve(string input)
