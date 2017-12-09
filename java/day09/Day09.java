@@ -9,8 +9,11 @@ public class Day09 {
                 new String(
                         Files.readAllBytes(Paths.get("../../inputs/day09.txt"))
                     ).trim();
+            long start = System.nanoTime();
             int[] result = Solve(data);
-            out.format("Total:%d, garbage:%d\n", result[0], result[1]);
+            long duration = System.nanoTime() - start;
+            out.format("Total:%d, garbage:%d, duration ns:%d\n",
+                    result[0], result[1], duration );
         }
         catch(Exception e) {
             System.out.println(e.getMessage());
