@@ -4,7 +4,7 @@ using System.IO;
 using System.Linq;
 using System.Text.RegularExpressions;
 
-/*namespace day07
+namespace day07
 {
     class Program
     {
@@ -30,12 +30,13 @@ using System.Text.RegularExpressions;
         static void SolvePt2(string data)
         {
             var nodes = GetNodes(data);
+            Console.WriteLine("Node count:" + nodes.Count);
             var rootName = SolvePt1(data);
             var rootNode = new Node() { Name = rootName };
             BuildTree(data, rootNode);
             foreach(var child in rootNode.Children)
             {
-                Console.WriteLine("Total for {0} ({1}):{2}", 
+                Console.WriteLine("Total for {0} ({1}):{2}",
                     child.Name, nodes[child.Name], WeightTotalFor(nodes, child));
             }
         }
@@ -73,7 +74,7 @@ using System.Text.RegularExpressions;
         {
             var subNodeLine = input
                 .Split(new[] {'\n','\r'}, StringSplitOptions.RemoveEmptyEntries)
-                .Where(s => s.StartsWith(rootName)) 
+                .Where(s => s.StartsWith(rootName))
                 .First();
             if(subNodeLine != null && subNodeLine.IndexOf("->") != -1)
             {
@@ -99,4 +100,4 @@ using System.Text.RegularExpressions;
         }
     }
 }
-*/
+

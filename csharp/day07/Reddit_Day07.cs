@@ -29,7 +29,6 @@ public class Reddit_Day07
         {
             disc = disc.Parent;
         }
-
         return disc;
     }
 
@@ -49,6 +48,7 @@ public class Reddit_Day07
         }
 
         var weightDiff = targetWeight - disc.GetTotalWeight();
+        Console.WriteLine("Disc:" + disc.Name + " targetWeight:" + targetWeight);
         return (disc.Weight + weightDiff).ToString();
     }
 }
