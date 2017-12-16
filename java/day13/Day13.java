@@ -17,7 +17,10 @@ public class Day13 {
                 System.out.println("" + l.index + ":" + l.depth);
             }*/
             //System.out.println(solvePt1(layers));
+            long start = System.currentTimeMillis();
             System.out.println(solvePt2(layers));
+            long duration = System.currentTimeMillis() - start;
+            System.out.format("Duration us:%d\n", duration);
         }
         catch(Exception e) {
             System.out.println("Exception:" + e.getMessage());
