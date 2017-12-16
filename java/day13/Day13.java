@@ -13,14 +13,8 @@ public class Day13 {
                             Integer.parseInt(strs[0].trim()),
                             Integer.parseInt(strs[1].trim())))
                 .collect(Collectors.toList());
-            /*for(Layer l : layers) {
-                System.out.println("" + l.index + ":" + l.depth);
-            }*/
-            //System.out.println(solvePt1(layers));
-            long start = System.currentTimeMillis();
+            System.out.println(solvePt1(layers));
             System.out.println(solvePt2(layers));
-            long duration = System.currentTimeMillis() - start;
-            System.out.format("Duration us:%d\n", duration);
         }
         catch(Exception e) {
             System.out.println("Exception:" + e.getMessage());
@@ -31,50 +25,37 @@ public class Day13 {
         int maxIndex = Collections.max(layers, Comparator.comparing(l -> l.index)).index;
         int currPos = -1;
         int cost = 0;
-        //Scanner s = new Scanner(System.in);
         while(currPos < maxIndex) {
-            //debugPrint(layers, currPos);
-            //s.next();
-
             currPos++;
             // if hit, calc cost
             Layer l = findLayerAtIndex(layers, currPos);
             if(l != null && l.currPos == 0) {
                 cost += (currPos * l.depth);
-                //System.out.println("Caught at " + currPos + " cost:" + cost);
             }
-            //debugPrint(layers, currPos);
-            //s.next();
             layers.stream().forEach(Layer::step);
         }
         return cost;
     }
 
-    static int solvePt2(List<Layer> layers) {
-        int maxIndex = Collections.max(layers, Comparator.comparing(l -> l.index)).index;
+    static int solvePt2(List<Layer> input) {
+        int maxIndex = Collections.max(input, Comparator.comparing(l -> l.index)).index;
+        int[] layers = new int[maxIndex + 1];
+        for(Layer l : input) {
+            layers[l.index] = l.depth;
+        }
+
         int delay = 0;
-        int cost = 0;
-
+        boolean caught;
         do {
-            layers.stream().forEach(Layer::reset);
-            int currPos = -1;
-            cost = 0;
-            for(int i = 0; i < delay; i++)
-                layers.stream().forEach(Layer::step);
-
-
-            while(currPos < maxIndex) {
-                currPos++;
-                // if hit, calc cost
-                Layer l = findLayerAtIndex(layers, currPos);
-                if(l != null && l.currPos == 0) {
-                    cost += (currPos * l.depth);
-                    cost++;
+            caught = false;
+            for(int i = 0; i < layers.length; i++) {
+                if(layers[i] != 0 && (i + delay) % ((layers[i] - 1) * 2) == 0) {
+                    caught = true;
+                    break;
                 }
-                layers.stream().forEach(Layer::step);
             }
             delay++;
-        } while(cost > 0);
+        } while(caught);
         return delay - 1;
     }
 
