@@ -5,3 +5,5 @@ bin
 *.swp
 *.class
 others
+.DS_Store
+/target
