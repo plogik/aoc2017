@@ -6,4 +6,5 @@ bin
 *.class
 others
 .DS_Store
-/target
+target/
+
